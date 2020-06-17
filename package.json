@@ -1,0 +1,19 @@
+{
+  "name": "gitignore-as-a-service",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "downshift": "^5.4.3",
+    "next": "^9.4.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "vercel": "^19.1.1"
+  }
+}

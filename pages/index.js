@@ -187,31 +187,53 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
-      <main className="my-20 flex flex-col items-center justify-center">
-        <h1 className="font-bold text-2xl mb-10">
-          Gitignore as a Service (GaaS)
-        </h1>
-        <div className="w-full md:w-1/3">
+      <main>
+        <div className="container mx-auto px-5">
+          <div className="lg:flex lg:justify-center mt-20">
+            <div className="w-full lg:w-6/12">
+              <h1 className="font-bold text-2xl mb-10">
+                Gitignore as a Service (GaaS)
+              </h1>
+              {!!result.data.length && (
+                <DropdownMultipleCombobox
+                  items={result.data.map((item) => item.name)}
+                  onSelectedItem={onSelectedItem}
+                  onRemoveSelectedItem={onRemoveSelectedItem}
+                />
+              )}
+            </div>
+          </div>
           {!!result.data.length && (
-            <>
-              <DropdownMultipleCombobox
-                items={result.data.map((item) => item.name)}
-                onSelectedItem={onSelectedItem}
-                onRemoveSelectedItem={onRemoveSelectedItem}
-              />
-              <pre className="rounded-lg p-5 mt-10 bg-black text-white overflow-x-auto">
-                {loading
-                  ? "Loading..."
-                  : !selectedItems.length
-                  ? "Choose a template"
-                  : selectedItems.map((template) => (
-                      <div
-                        key={template.name}
-                      >{`\n\n##### ${template.name}\n\n${template.text}`}</div>
-                    ))}
-              </pre>
-            </>
+            <pre className="rounded-lg p-5 mt-10 bg-black text-white overflow-x-auto w-full lg:mx-auto lg:w-2/3">
+              {loading
+                ? "Loading..."
+                : !selectedItems.length
+                ? "Choose a template"
+                : selectedItems.map((template) => (
+                    <div
+                      key={template.name}
+                    >{`\n\n##### ${template.name}\n\n${template.text}`}</div>
+                  ))}
+            </pre>
           )}
+          <footer className="text-center text-gray-500 my-20">
+            Made by{" "}
+            <a
+              className="underline"
+              href="https://jesusferretti.now.sh"
+              target="_blank"
+            >
+              Jesús Ferretti
+            </a>{" "}
+            <span className="mx-2">·</span>{" "}
+            <a
+              className="underline"
+              href="https://github.com/jferrettiboke/gitignore-as-a-service"
+              target="_blank"
+            >
+              Source code
+            </a>
+          </footer>
         </div>
       </main>
     </>
